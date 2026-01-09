@@ -3,7 +3,7 @@ services:
   - type: web
     name: aegis-v2-api
     runtime: docker
-    repo: https://github.com/YOUR_USERNAME/aegis-v2-api
+    repo: https://github.com/cedriclamessi-art/aegis-v2-api
     branch: main
     dockerfilePath: ./Dockerfile
     envVars:
@@ -24,7 +24,7 @@ services:
   - type: worker
     name: aegis-v2-worker
     runtime: docker
-    repo: https://github.com/YOUR_USERNAME/aegis-v2-api
+    repo: https://github.com/cedriclamessi-art/aegis-v2-api
     branch: main
     dockerfilePath: ./Dockerfile.worker
     envVars:
