@@ -1,0 +1,41 @@
+services:
+  # API Web Service
+  - type: web
+    name: aegis-v2-api
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/aegis-v2-api
+    branch: main
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: AEGIS_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
+    
+  # Background Worker (separate from API)
+  - type: worker
+    name: aegis-v2-worker
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/aegis-v2-api
+    branch: main
+    dockerfilePath: ./Dockerfile.worker
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: AEGIS_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+    autoDeploy: true
